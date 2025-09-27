@@ -1,3 +1,4 @@
+// Quotes Array
 const codingQuotes = [
   {
     text: "Talk is cheap. Show me the code.",
@@ -41,15 +42,29 @@ const codingQuotes = [
   },
 ];
 
+//initializing Dom elements
 let quoteEl = document.querySelector(".quote");
 let authorEl = document.querySelector(".author");
-
+let copyEl = document.querySelector(".copy-btn");
 let nextQuoteEl = document.querySelector(".next-btn");
-quoteEl.textContent = codingQuotes[0].text;
-authorEl.textContent = "-" + codingQuotes[0].author;
+let randomNumber = 0;
 
+//first quote on refresh
+quoteEl.textContent = codingQuotes[randomNumber].text;
+authorEl.textContent = "-" + codingQuotes[randomNumber].author;
+
+// generate random quote on next button
 nextQuoteEl.addEventListener("click", function () {
-  let randomNumber = Math.floor(Math.random() * codingQuotes.length);
+  randomNumber = Math.floor(Math.random() * codingQuotes.length); // givs random index
   quoteEl.textContent = codingQuotes[randomNumber].text;
   authorEl.textContent = "-" + codingQuotes[randomNumber].author;
+  copyEl.textContent = "Copy";
+});
+
+// quote coppied on copy button click
+copyEl.addEventListener("click", () => {
+  navigator.clipboard.writeText(
+    `${codingQuotes[randomNumber].text}  -  ${codingQuotes[randomNumber].author}`
+  );
+  copyEl.textContent = "Copied";
 });
