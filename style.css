@@ -1,0 +1,38 @@
+.bg-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+
+.card {
+  background-color: #06080e;
+  color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 20px rgba(0, 0, 0, 0.1);
+  padding: 40px 50px;
+  text-align: center;
+  width: 400px;
+}
+
+.author {
+  text-align: right;
+}
+
+.icon {
+  color: #ffffff;
+  font-size: 10px;
+}
+
+.copy-btn,
+.next-btn {
+  background-color: #3066be;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  color: #ffffff;
+  margin-left: 10px;
+  font-size: 15px;
+}
