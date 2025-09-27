@@ -47,15 +47,26 @@ let quoteEl = document.querySelector(".quote");
 let authorEl = document.querySelector(".author");
 let copyEl = document.querySelector(".copy-btn");
 let nextQuoteEl = document.querySelector(".next-btn");
-let randomNumber = 0;
+let randomNumber = Math.floor(Math.random() * codingQuotes.length); // givs random index;
 
 //first quote on refresh
 quoteEl.textContent = codingQuotes[randomNumber].text;
 authorEl.textContent = "-" + codingQuotes[randomNumber].author;
 
+// generate unique random number
+function getRandomNumber() {
+  let newNumber;
+  do {
+    newNumber = Math.floor(Math.random() * codingQuotes.length);
+  } while (newNumber === randomNumber);
+  return newNumber;
+}
+
 // generate random quote on next button
 nextQuoteEl.addEventListener("click", function () {
-  randomNumber = Math.floor(Math.random() * codingQuotes.length); // givs random index
+  randomNumber = getRandomNumber();
+  console.log(randomNumber);
+
   quoteEl.textContent = codingQuotes[randomNumber].text;
   authorEl.textContent = "-" + codingQuotes[randomNumber].author;
   copyEl.textContent = "Copy";
@@ -64,6 +75,9 @@ nextQuoteEl.addEventListener("click", function () {
 // quote coppied on copy button click
 copyEl.addEventListener("click", () => {
   navigator.clipboard.writeText(
+    `${codingQuotes[randomNumber].text}  -  ${codingQuotes[randomNumber].author}`
+  );
+  console.log(
     `${codingQuotes[randomNumber].text}  -  ${codingQuotes[randomNumber].author}`
   );
   copyEl.textContent = "Copied";
